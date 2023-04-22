@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""
+    />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin="">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
+
+    <title>Mapa Sonoro</title>
+</head>
+<body>
+    <h1>Leaflet</h1>
+    <p>Este mapa reproduce sonidos en los PopUp de cada punto</p>
+    <div id="mapid"></div>
+
+    <script type="application/geo+json" id="geo-data">
+        {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {
+                "title": "Centro de Bogotá",
+                "audio_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Budapest_metro_jingle.ogg"
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [-74.12, 4.65]
+              }
+            }      
+          ]
+        }
+    </script>
+    
+    <script type="text/html" id="popup-template">
+        <div>
+          <h2><%= title %></h2>
+          <audio src="<%= audio_url %>" controls></audio>
+        </div>
+    </script>
+    
+    <script src="index.js"></script>
+
+</body>
+</html>
